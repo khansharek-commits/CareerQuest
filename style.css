@@ -845,3 +845,45 @@ button { font: inherit; color: inherit; cursor: pointer; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; transition: none !important; }
 }
+
+/* ---------------------------------------------------------------------
+   Cloud sync dialog
+   --------------------------------------------------------------------- */
+.sync-dialog {
+  position: relative;
+  width: min(460px, calc(100vw - 32px));
+  border: 2px solid var(--gold); padding: 26px 24px 22px;
+  background: var(--night); color: var(--parch);
+  font-family: var(--font-body); font-size: .98rem; line-height: 1.5;
+  box-shadow: 8px 8px 0 var(--crimson-deep);
+}
+.sync-dialog::backdrop { background: rgba(10, 6, 5, .75); }
+.sync-dialog h3 {
+  margin: 0 0 6px; font-family: var(--font-heraldic); font-weight: 800;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--gold);
+}
+.sync-dialog p, .sync-dialog ol { margin: 0 0 12px; }
+.sync-dialog ol { padding-left: 20px; }
+.sync-dialog a { color: var(--gold-soft); }
+.sync-status { color: var(--ash); }
+.sync-status b { color: var(--parch); font-weight: 600; }
+.sync-fine { font-size: .82rem; color: var(--ash); }
+#syncForm { display: flex; gap: 8px; margin-bottom: 8px; }
+#syncToken {
+  flex: 1; min-width: 0; padding: 8px 10px;
+  border: 1.5px solid #4a3a33; background: var(--ink); color: var(--parch);
+  font: inherit; font-size: .9rem;
+}
+#syncToken:focus { outline: none; border-color: var(--gold); }
+.sync-primary {
+  border: 0; background: var(--crimson); color: var(--parch); cursor: pointer;
+  font-family: var(--font-heraldic); font-weight: 800; font-size: .72rem;
+  letter-spacing: .12em; text-transform: uppercase; padding: 8px 14px;
+}
+.sync-primary:hover { background: var(--splash-red); }
+.sync-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.sync-close {
+  position: absolute; top: 8px; right: 10px;
+  border: 0; background: none; color: var(--ash); font-size: 1.6rem; line-height: 1; cursor: pointer;
+}
+.sync-close:hover { color: var(--gold); }

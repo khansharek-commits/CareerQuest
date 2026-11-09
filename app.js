@@ -67,6 +67,7 @@ function saveState() {
     if (!saveWarned) toast("This browser is blocking saves. Progress will be lost on refresh.");
     saveWarned = true;
   }
+  if (typeof CloudSync !== "undefined") CloudSync.changed();
 }
 
 // ---------------------------------------------------------------------
@@ -681,6 +682,7 @@ function importBackup(file) {
       if (!confirm("Replace your current progress with this backup?")) return;
       localStorage.setItem(SAVE_KEY, JSON.stringify(data));
       state = loadState();
+      saveState();
       render();
       toast("Backup restored.");
     } catch (e) {

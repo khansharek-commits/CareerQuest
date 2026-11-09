@@ -47,7 +47,8 @@
   </main>
 
   <footer class="footer">
-    <span>Progress is saved in this browser.</span>
+    <span id="saveNote">Progress is saved in this browser.</span>
+    <button id="syncBtn" type="button" class="ghost">Cloud sync: off</button>
     <button id="exportBtn" type="button" class="ghost">Download backup</button>
     <label class="ghost">Restore backup<input id="importInput" type="file" accept=".json,application/json" hidden></label>
   </footer>
@@ -56,8 +57,37 @@
 
   <div id="splash" class="splash" hidden></div>
 
+  <dialog id="syncDialog" class="sync-dialog" aria-labelledby="syncTitle">
+    <h3 id="syncTitle">Cloud sync</h3>
+    <p class="sync-status">Status: <b id="syncStatus">Off</b></p>
+
+    <div id="syncSetup">
+      <p>Your save is kept in a private GitHub Gist, so every device you connect shares the same progress. Do this once on each device:</p>
+      <ol>
+        <li><a href="https://github.com/settings/tokens/new?scopes=gist&amp;description=Career%20Quest%20sync" target="_blank" rel="noopener">Create a GitHub token</a> with only the <b>gist</b> box ticked. Set the expiration to "No expiration" if you don't want to redo this.</li>
+        <li>Copy the token and paste it here.</li>
+      </ol>
+      <form id="syncForm">
+        <input id="syncToken" type="password" autocomplete="off" spellcheck="false" placeholder="ghp_…" aria-label="GitHub token">
+        <button type="submit" class="sync-primary">Connect</button>
+      </form>
+      <p class="sync-fine">The token stays in this browser and is only sent to GitHub.</p>
+    </div>
+
+    <div id="syncConnected" hidden>
+      <p>This device is connected. Progress syncs automatically when you complete a quest and when you open the page.</p>
+      <div class="sync-actions">
+        <button id="syncNow" type="button" class="sync-primary">Sync now</button>
+        <button id="syncOff" type="button" class="ghost">Turn off on this device</button>
+      </div>
+    </div>
+
+    <button id="syncClose" type="button" class="sync-close" aria-label="Close">×</button>
+  </dialog>
+
   <script src="quests.js"></script>
   <script src="audio.js"></script>
   <script src="app.js"></script>
+  <script src="sync.js"></script>
 </body>
 </html>
