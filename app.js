@@ -394,13 +394,42 @@ function questCard(q, currentRank, index, showOwner = false) {
   </article>`;
 }
 
+// The Today board: Strength habits every day, plus one quest from each
+// stat and two bond quests, picked fresh each day. Each stat's own tab
+// still lists everything.
+const DAILY_HABIT_STAT = "Strength";
+const BOND_PICKS = 2;
+
+function dayHash(text) {
+  let h = 2166136261;
+  for (let i = 0; i < text.length; i++) { h ^= text.charCodeAt(i); h = Math.imul(h, 16777619); }
+  return h >>> 0;
+}
+
+// Pick n quests from the list, the same ones all day.
+function pickForToday(list, n, salt) {
+  const day = dayKey(new Date());
+  return list
+    .slice()
+    .sort((a, b) => dayHash(day + salt + a.id) - dayHash(day + salt + b.id))
+    .slice(0, n);
+}
+
+function isHabit(q) { return q.stat === DAILY_HABIT_STAT && q.cooldown === "daily"; }
+
 function readyQuestsNow() {
+  const done = doneToday().map(e => QUEST_BY_ID[e.id]).filter(Boolean);
   const ready = [];
   STAT_NAMES.forEach(stat => {
     const rank = statRank(stat);
-    QUESTS.forEach(q => { if (q.stat === stat && q.rank <= rank && isReady(q)) ready.push(q); });
+    const open = QUESTS.filter(q => q.stat === stat && q.rank <= rank && isReady(q));
+    open.filter(isHabit).forEach(q => ready.push(q));
+    // One pick per stat; once you finish it, that stat is done for the day.
+    const pickedDone = done.some(q => q.stat === stat && !isHabit(q));
+    if (!pickedDone) ready.push(...pickForToday(open.filter(q => !isHabit(q)), 1, stat));
   });
-  BOND_QUESTS.forEach(q => { if (isReady(q)) ready.push(q); });
+  const bondsLeft = BOND_PICKS - done.filter(q => q.bond).length;
+  if (bondsLeft > 0) ready.push(...pickForToday(BOND_QUESTS.filter(isReady), bondsLeft, "bonds"));
   return ready;
 }
 
@@ -438,7 +467,7 @@ function todayBoard() {
       <div class="board-title">
         <p class="eyebrow">Quest board</p>
         <h2>Today</h2>
-        <p class="desc">Every quest you can do right now, across all eight stats and your bonds.</p>
+        <p class="desc">Your Strength habits, plus one quest from each stat and two for your bonds. A fresh pick every day. Open a stat to see all its quests.</p>
       </div>
       <div class="board-side">
         ${shield("sun", "")}

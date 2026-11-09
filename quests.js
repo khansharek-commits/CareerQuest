@@ -96,7 +96,6 @@ const QUESTS = [
   { id: "exp-4b", stat: "Expertise", rank: 4, title: "Earnings call", how: "Listen to a listed infrastructure or data centre company's earnings call. Note 5 points.", xp: 100, slot: "Evening", cooldown: "monthly", trial: false },
   { id: "exp-4t", stat: "Expertise", rank: 4, title: "TRIAL: Sector thesis", how: "Write a 3 page view on where to invest in digital infrastructure over the next 5 years.", xp: 500, slot: "Evening", cooldown: "once", trial: true },
 
-  { id: "exp-5a", stat: "Expertise", rank: 5, title: "Publish a view", how: "Write and post a short LinkedIn article on an infrastructure trend.", xp: 250, slot: "Evening", cooldown: "monthly", trial: false },
   { id: "exp-5b", stat: "Expertise", rank: 5, title: "Why this sector, why now", how: "Answer it in 2 minutes with no notes. Record it and repeat until sharp.", xp: 100, slot: "Evening", cooldown: "monthly", trial: false },
   { id: "exp-5t", stat: "Expertise", rank: 5, title: "TRIAL: Face the elders", how: "Present your sector thesis to someone senior in the industry and get their honest feedback.", xp: 800, slot: "Day", cooldown: "once", trial: true },
 
@@ -229,8 +228,6 @@ const QUESTS = [
   // INFLUENCE: networking, negotiation, brand
   // ===================================================================
   { id: "inf-1a", stat: "Influence", rank: 1, title: "Reconnect", how: "Message one former colleague just to catch up.", xp: 20, slot: "Evening", cooldown: "weekly", trial: false },
-  { id: "inf-1b", stat: "Influence", rank: 1, title: "Join the conversation", how: "Leave thoughtful comments on 3 industry posts on LinkedIn.", xp: 20, slot: "Morning", cooldown: "weekly", trial: false },
-  { id: "inf-1c", stat: "Influence", rank: 1, title: "Polish your banner", how: "Rewrite your LinkedIn headline and summary around your strongest story: a $500M program plus your MBA.", xp: 80, slot: "Evening", cooldown: "once", trial: false },
   { id: "inf-1t", stat: "Influence", rank: 1, title: "TRIAL: The target list", how: "List 20 target companies and 3 people at each you could reach.", xp: 150, slot: "Evening", cooldown: "once", trial: true },
 
   { id: "inf-2a", stat: "Influence", rank: 2, title: "Coffee chat", how: "20 minute chat with someone in infrastructure investing. Ask about their path, not for a job.", xp: 80, slot: "Day", cooldown: "weekly", trial: false },
