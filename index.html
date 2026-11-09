@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Career Quest</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Serif+Display&family=Cinzel:wght@600;800&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-season">Season 1</span>
+      <h1><span class="brand-a">Career</span><span class="brand-b">Quest</span></h1>
+    </div>
+    <div class="today">
+      <div id="todayDate" class="today-date"></div>
+      <div id="countdown" class="countdown"></div>
+    </div>
+    <nav id="slots" class="slots" aria-label="Time of day filter"></nav>
+    <div class="audio-btns">
+      <button id="musicBtn" class="sound-btn" type="button"></button>
+      <button id="soundBtn" class="sound-btn" type="button"></button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="sheet" aria-label="Character sheet">
+      <div class="hero">
+        <img class="portrait" src="character.png" alt="Sharek, a white-haired knight with a banner and shield">
+        <div class="hero-text">
+          <p class="eyebrow">Character sheet</p>
+          <h2 class="hero-name">Sharek</h2>
+          <div id="heroMeta" class="hero-meta"></div>
+        </div>
+      </div>
+      <ol id="stats" class="stats"></ol>
+    </section>
+
+    <section id="board" class="board" aria-label="Quest board"></section>
+
+    <section id="bonds" class="bonds" aria-label="Bonds"></section>
+  </main>
+
+  <footer class="footer">
+    <span>Progress is saved in this browser.</span>
+    <button id="exportBtn" type="button" class="ghost">Download backup</button>
+    <label class="ghost">Restore backup<input id="importInput" type="file" accept=".json,application/json" hidden></label>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <div id="splash" class="splash" hidden></div>
+
+  <script src="quests.js"></script>
+  <script src="audio.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

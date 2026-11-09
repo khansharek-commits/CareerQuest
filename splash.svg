@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" preserveAspectRatio="none">
+  <!-- Small paint swipe behind the selected stat. The filter roughens the edges like brushed paint. -->
+  <defs>
+    <filter id="rough" x="-10%" y="-40%" width="120%" height="180%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035 0.09" numOctaves="4" seed="3"/>
+      <feDisplacementMap in="SourceGraphic" scale="26" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+  <g fill="#d8283b" filter="url(#rough)">
+    <path d="M16 36 L388 14 L392 90 L22 108 Z"/>
+    <path d="M330 92 L346 118 L322 96 Z"/>
+    <circle cx="380" cy="104" r="8"/>
+    <circle cx="8" cy="22" r="6"/>
+    <circle cx="300" cy="8" r="4"/>
+    <circle cx="62" cy="114" r="5"/>
+  </g>
+</svg>

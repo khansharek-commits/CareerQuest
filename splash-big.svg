@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 700">
+  <!-- Large paint splatter behind the menu, with drips and droplets. -->
+  <defs>
+    <filter id="rough" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="5" seed="11"/>
+      <feDisplacementMap in="SourceGraphic" scale="70" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+  <g fill="#d8283b" filter="url(#rough)">
+    <path d="M40 130 L470 50 L690 150 L610 320 L750 410 L520 500 L320 460 L150 590 L70 420 L10 300 Z"/>
+    <path d="M200 520 L214 690 L192 690 Z"/>
+    <path d="M420 480 L430 640 L412 640 Z"/>
+    <path d="M610 440 L618 560 L602 560 Z"/>
+    <circle cx="730" cy="120" r="22"/>
+    <circle cx="770" cy="200" r="10"/>
+    <circle cx="40" cy="620" r="16"/>
+    <circle cx="560" cy="30" r="12"/>
+    <circle cx="760" cy="520" r="14"/>
+    <circle cx="120" cy="60" r="9"/>
+  </g>
+</svg>
