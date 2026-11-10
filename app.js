@@ -721,7 +721,7 @@ function importBackup(file) {
       render();
       toast("Backup restored.");
     } catch (e) {
-      toast("That file is not a Career Quest backup.");
+      toast("That file is not a Persona Quest backup.");
     }
   };
   reader.readAsText(file);

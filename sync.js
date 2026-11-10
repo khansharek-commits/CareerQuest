@@ -60,7 +60,7 @@ const CloudSync = (() => {
     const made = await gh("/gists", {
       method: "POST",
       body: JSON.stringify({
-        description: "Career Quest save (synced by the game)",
+        description: "Persona Quest save (synced by the game)",
         public: false,
         files: { [FILE]: { content: JSON.stringify({ updatedAt: 0, state: null }) } }
       })

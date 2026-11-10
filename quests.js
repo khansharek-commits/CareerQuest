@@ -204,22 +204,22 @@ const QUESTS = [
   // ===================================================================
   // CRAFT: AI, coding, tech
   // ===================================================================
-  { id: "cra-1a", stat: "Craft", rank: 1, title: "Course lesson", how: "Complete one lesson of the Career Quest coding course.", xp: 50, slot: "Evening", cooldown: "weekly", trial: false },
+  { id: "cra-1a", stat: "Craft", rank: 1, title: "Course lesson", how: "Complete one lesson of the Persona Quest coding course.", xp: 50, slot: "Evening", cooldown: "weekly", trial: false },
   { id: "cra-1b", stat: "Craft", rank: 1, title: "AI vocabulary", how: "Learn what a model, a prompt, an API and an agent are. Explain each in one line.", xp: 60, slot: "Evening", cooldown: "once", trial: false },
-  { id: "cra-1t", stat: "Craft", rank: 1, title: "TRIAL: Forge the sheet", how: "Get Career Quest running in your browser with your character sheet.", xp: 150, slot: "Evening", cooldown: "once", trial: true },
+  { id: "cra-1t", stat: "Craft", rank: 1, title: "TRIAL: Forge the sheet", how: "Get Persona Quest running in your browser with your character sheet.", xp: 150, slot: "Evening", cooldown: "once", trial: true },
 
   { id: "cra-2a", stat: "Craft", rank: 2, title: "Prompt craft", how: "Rewrite one work prompt 3 different ways. Keep the best version.", xp: 30, slot: "Day", cooldown: "weekly", trial: false },
   { id: "cra-2b", stat: "Craft", rank: 2, title: "Save your progress", how: "Learn Git basics and save your project with version control.", xp: 80, slot: "Evening", cooldown: "once", trial: false },
   { id: "cra-2c", stat: "Craft", rank: 2, title: "Automate a chore", how: "Use Claude to cut time on a repetitive work task, such as summarising your NCR tracker.", xp: 100, slot: "Day", cooldown: "monthly", trial: false },
-  { id: "cra-2t", stat: "Craft", rank: 2, title: "TRIAL: Halfway", how: "Finish Week 4 of the course: Career Quest feels like a real game.", xp: 250, slot: "Evening", cooldown: "once", trial: true },
+  { id: "cra-2t", stat: "Craft", rank: 2, title: "TRIAL: Halfway", how: "Finish Week 4 of the course: Persona Quest feels like a real game.", xp: 250, slot: "Evening", cooldown: "once", trial: true },
 
-  { id: "cra-3a", stat: "Craft", rank: 3, title: "Ship a feature solo", how: "Add one feature to Career Quest without following the course guide.", xp: 80, slot: "Evening", cooldown: "weekly", trial: false },
+  { id: "cra-3a", stat: "Craft", rank: 3, title: "Ship a feature solo", how: "Add one feature to Persona Quest without following the course guide.", xp: 80, slot: "Evening", cooldown: "weekly", trial: false },
   { id: "cra-3b", stat: "Craft", rank: 3, title: "Chips to clouds", how: "Explain how GPUs, TPUs, data centres and AI models connect, in 2 minutes.", xp: 100, slot: "Evening", cooldown: "once", trial: false },
   { id: "cra-3t", stat: "Craft", rank: 3, title: "TRIAL: Summon the Quest Master", how: "Call the Claude API from your app to generate a daily quest.", xp: 350, slot: "Evening", cooldown: "once", trial: true },
 
   { id: "cra-4a", stat: "Craft", rank: 4, title: "New tool scout", how: "Try a new AI tool or feature and write how it could apply to your work.", xp: 40, slot: "Evening", cooldown: "weekly", trial: false },
   { id: "cra-4b", stat: "Craft", rank: 4, title: "AI at work pitch", how: "Propose one AI use case to your team with an estimate of time saved.", xp: 150, slot: "Day", cooldown: "monthly", trial: false },
-  { id: "cra-4t", stat: "Craft", rank: 4, title: "TRIAL: Go live", how: "Deploy Career Quest so you can use it on your phone.", xp: 500, slot: "Evening", cooldown: "once", trial: true },
+  { id: "cra-4t", stat: "Craft", rank: 4, title: "TRIAL: Go live", how: "Deploy Persona Quest so you can use it on your phone.", xp: 500, slot: "Evening", cooldown: "once", trial: true },
 
   { id: "cra-5a", stat: "Craft", rank: 5, title: "Teach the guild", how: "Run a 20 minute AI session for your team.", xp: 200, slot: "Day", cooldown: "monthly", trial: false },
   { id: "cra-5t", stat: "Craft", rank: 5, title: "TRIAL: A tool for the guild", how: "Build a small tool your team actually uses at work.", xp: 800, slot: "Day", cooldown: "once", trial: true },
