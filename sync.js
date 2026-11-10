@@ -28,8 +28,6 @@ const CloudSync = (() => {
     if (el) el.textContent = s;
     const btn = document.getElementById("syncBtn");
     if (btn) btn.textContent = meta.token ? "Cloud sync: on" : "Cloud sync: off";
-    const top = document.getElementById("syncTopBtn");
-    if (top) top.textContent = meta.token ? "Sync: on" : "Sync: off";
     const foot = document.getElementById("saveNote");
     if (foot) foot.textContent = meta.token
       ? "Progress syncs across your devices."
@@ -209,7 +207,6 @@ const CloudSync = (() => {
 
   function wire() {
     document.getElementById("syncBtn").addEventListener("click", openDialog);
-    document.getElementById("syncTopBtn").addEventListener("click", openDialog);
     document.getElementById("syncClose").addEventListener("click", () => document.getElementById("syncDialog").close());
     document.getElementById("syncForm").addEventListener("submit", async e => {
       e.preventDefault();

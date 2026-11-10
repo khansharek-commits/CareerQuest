@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Serif+Display&family=Cinzel:wght@600;800&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=5">
+  <link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
   <div class="backdrop" aria-hidden="true"></div>
@@ -22,11 +22,6 @@
       <div id="countdown" class="countdown"></div>
     </div>
     <nav id="slots" class="slots" aria-label="Time of day filter"></nav>
-    <div class="audio-btns">
-      <button id="musicBtn" class="sound-btn" type="button"></button>
-      <button id="soundBtn" class="sound-btn" type="button"></button>
-      <button id="syncTopBtn" class="sound-btn" type="button">Sync: off</button>
-    </div>
   </header>
 
   <main class="layout">
@@ -49,6 +44,8 @@
 
   <footer class="footer">
     <span id="saveNote">Progress is saved in this browser.</span>
+    <button id="musicBtn" type="button" class="ghost"></button>
+    <button id="soundBtn" type="button" class="ghost"></button>
     <button id="syncBtn" type="button" class="ghost">Cloud sync: off</button>
     <button id="exportBtn" type="button" class="ghost">Download backup</button>
     <label class="ghost">Restore backup<input id="importInput" type="file" accept=".json,application/json" hidden></label>
@@ -86,9 +83,9 @@
     <button id="syncClose" type="button" class="sync-close" aria-label="Close">×</button>
   </dialog>
 
-  <script src="quests.js?v=5"></script>
-  <script src="audio.js?v=5"></script>
-  <script src="app.js?v=5"></script>
-  <script src="sync.js?v=5"></script>
+  <script src="quests.js?v=6"></script>
+  <script src="audio.js?v=6"></script>
+  <script src="app.js?v=6"></script>
+  <script src="sync.js?v=6"></script>
 </body>
 </html>
