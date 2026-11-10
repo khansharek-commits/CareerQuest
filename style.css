@@ -887,3 +887,52 @@ button { font: inherit; color: inherit; cursor: pointer; }
   border: 0; background: none; color: var(--ash); font-size: 1.6rem; line-height: 1; cursor: pointer;
 }
 .sync-close:hover { color: var(--gold); }
+
+/* ---------------------------------------------------------------------
+   Guardians and boss battles
+   --------------------------------------------------------------------- */
+.guardian {
+  margin: 0; display: grid; justify-items: center; gap: 4px; align-self: end;
+  text-align: center; color: #fff; text-shadow: 1px 1px 0 #000;
+}
+.guardian img {
+  height: 150px; width: auto; image-rendering: pixelated;
+  filter: drop-shadow(5px 5px 0 rgba(0, 0, 0, .75));
+  animation: idle 3.2s ease-in-out infinite;
+}
+.guardian figcaption { display: grid; line-height: 1.15; }
+.guardian small {
+  font-family: var(--font-heraldic); font-weight: 800; font-size: .62rem;
+  letter-spacing: .2em; text-transform: uppercase; color: var(--gold);
+}
+.guardian b { font-family: var(--font-menu); font-weight: 400; font-size: 1.35rem; text-transform: uppercase; }
+.guardian span { font-style: italic; font-size: .85rem; }
+.board-head:has(.guardian) { grid-template-columns: 1fr auto auto; }
+
+.boss-sprite {
+  align-self: flex-end; height: 104px; width: auto; margin: -10px 0 -18px;
+  image-rendering: pixelated; filter: drop-shadow(4px 4px 0 #000);
+  position: relative; z-index: 1;
+}
+.quest.trial.is-done .boss-sprite { filter: grayscale(1) brightness(.6); transform: rotate(-80deg) translate(-20px, 10px); }
+
+.splash-boss {
+  height: 120px; width: auto; image-rendering: pixelated;
+  filter: grayscale(.6) drop-shadow(5px 5px 0 #000);
+  animation: boss-fall .9s cubic-bezier(.5, 0, .4, 1) .5s both;
+}
+@keyframes boss-fall {
+  from { transform: none; opacity: 1; }
+  to { transform: rotate(-85deg) translate(-30px, 20px); opacity: .55; }
+}
+
+@container (max-width: 640px) {
+  .board-head:has(.guardian) { grid-template-columns: 1fr auto; }
+  .board-head:has(.guardian) .board-side { grid-column: 1 / -1; }
+  .guardian img { height: 110px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .guardian img, .splash-boss { animation: none; }
+}
+.quest.trial .trial-banner { padding-right: 96px; }
+.quest.trial .trial-banner small { line-height: 1.35; }

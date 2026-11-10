@@ -151,7 +151,7 @@ function readyText(q) {
     const first = new Date(now.getFullYear(), now.getMonth() + 1, 1);
     return "Back " + first.toLocaleDateString(undefined, { day: "numeric", month: "short" });
   }
-  return q.trial ? "Conquered" : "Complete";
+  return q.trial ? "Defeated" : "Complete";
 }
 
 const COOLDOWN_LABEL = { daily: "Daily", weekly: "Weekly", monthly: "Monthly", once: "One time" };
@@ -229,7 +229,7 @@ function completeQuest(id) {
     museReact("trial", { need: fmt(need), next: RANK_TITLES[after.rank] });
   } else if (after.awaits && !before.awaits) {
     Sound.pluck();
-    toast(`<b>Trial awaits!</b> ${stat} has the XP for ${RANK_TITLES[after.rank]}.`, true);
+    toast(`<b>Boss awaits!</b> ${stat} has the XP for ${RANK_TITLES[after.rank]}. ${GUARDIANS[stat].name} is ready to fight.`, true);
     museReact("awaits", { stat, next: RANK_TITLES[after.rank] });
   } else {
     Sound.pluck();
@@ -373,13 +373,15 @@ function questCard(q, currentRank, index, showOwner = false) {
   const owner = showOwner ? `<span class="chip owner">${q.stat || q.bond}</span>` : "";
   const title = q.title.replace(/^TRIAL:\s*/, "");
   let trialNote = "";
+  const boss = q.trial ? GUARDIANS[q.stat] : null;
   if (q.trial) {
-    trialNote = q.rank === KING ? "The final trial"
-      : q.rank === currentRank ? `Defeat it to become ${RANK_TITLES[q.rank]}`
-      : `Rank ${ROMAN[q.rank - 1]} trial`;
+    trialNote = q.rank === KING ? `Final battle with ${boss.name}`
+      : q.rank === currentRank ? `Defeat ${boss.name} to become ${RANK_TITLES[q.rank]}`
+      : `Rank ${ROMAN[q.rank - 1]} battle with ${boss.name}`;
   }
   return `<article class="quest ${q.trial ? "trial" : "parchment"} ${q.bond ? "bond-quest" : ""} ${ready ? "" : "is-done"} ${justDone === q.id ? "just-done" : ""}" style="animation-delay:${index * 35}ms">
-    ${q.trial ? `<div class="trial-banner">${SWORDS_ICON}<span>Trial</span><small>${trialNote}</small></div>` : ""}
+    ${q.trial ? `<div class="trial-banner">${SWORDS_ICON}<span>Boss</span><small>${trialNote}</small></div>
+    <img class="boss-sprite" src="${boss.img}" alt="${boss.name} ${boss.title}">` : ""}
     <div class="xp-tag">${reward}</div>
     <h4>${title}</h4>
     <p class="how">${q.how}</p>
@@ -387,10 +389,10 @@ function questCard(q, currentRank, index, showOwner = false) {
       ${owner}<span class="chip">${SLOT_ICON[q.slot] || ""}${q.slot}</span>
       <span class="chip">${COOLDOWN_LABEL[q.cooldown]}</span>
       ${ready
-        ? `<button type="button" class="act" data-complete="${q.id}">${q.trial ? "Face the trial" : "Complete"}</button>`
+        ? `<button type="button" class="act" data-complete="${q.id}">${q.trial ? "Fight the boss" : "Complete"}</button>`
         : `<span class="cool">${readyText(q)}</span>`}
     </div>
-    ${ready ? "" : `<div class="stamp">${q.trial ? "Conquered" : "Done"}</div>`}
+    ${ready ? "" : `<div class="stamp">${q.trial ? "Defeated" : "Done"}</div>`}
   </article>`;
 }
 
@@ -515,6 +517,10 @@ function renderBoard() {
         <h2>${stat}</h2>
         <p class="desc">${STATS[stat]}</p>
       </div>
+      <figure class="guardian">
+        <img src="${GUARDIANS[stat].img}" alt="${GUARDIANS[stat].name} ${GUARDIANS[stat].title}">
+        <figcaption><small>Guardian</small><b>${GUARDIANS[stat].name}</b><span>${GUARDIANS[stat].title}</span></figcaption>
+      </figure>
       <div class="board-side">
         ${shield(STAT_CHARGE[stat], statTincture(stat))}
         <span class="board-tag">${RANK_TITLES[rank - 1]}</span>
@@ -529,7 +535,7 @@ function renderBoard() {
 
   if (p.awaits) {
     const t = trialFor(stat, rank);
-    html += `<p class="awaits-banner">Trial awaits! You have the XP for ${RANK_TITLES[rank]}. Conquer <em>${t.title.replace(/^TRIAL:\s*/, "")}</em> to rank up.</p>`;
+    html += `<p class="awaits-banner">Boss awaits! You have the XP for ${RANK_TITLES[rank]}. Defeat ${GUARDIANS[stat].name} in <em>${t.title.replace(/^TRIAL:\s*/, "")}</em> to rank up.</p>`;
   }
 
   // Current rank first, then the lower ranks you have already passed.
@@ -661,7 +667,8 @@ function showRankUp(stat, rank) {
     ${buildShards(king ? 18 : 10)}
     <div class="splash-core" role="alertdialog" aria-label="Rank up: ${stat} is now ${RANK_TITLES[rank - 1]}">
       <div class="splash-shield">${shield(king ? "crown" : STAT_CHARGE[stat], "or")}</div>
-      <div class="splash-stat">${stat}</div>
+      <img class="splash-boss" src="${GUARDIANS[stat].img}" alt="">
+      <div class="splash-stat">${GUARDIANS[stat].name} defeated · ${stat}</div>
       <div class="splash-title">Rank up</div>
       <div class="splash-rank">${RANK_TITLES[rank - 1]}</div>
       ${king ? `<div class="splash-sub">Long live the King of ${stat}</div>` : ""}

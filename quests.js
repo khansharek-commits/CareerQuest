@@ -274,3 +274,18 @@ const BOND_QUESTS = [
   { id: "fa-c", bond: "Family", title: "Small gesture", how: "Send something thoughtful home, a gift or a handwritten note.", points: 3, slot: "Day", cooldown: "monthly" },
   { id: "fa-d", bond: "Family", title: "Plan the next visit", how: "Lock in dates for your next trip home.", points: 5, slot: "Evening", cooldown: "monthly" }
 ];
+
+// =====================================================================
+// GUARDIANS: each stat has a guardian who is also its boss. Every
+// rank-up trial is a boss battle against that stat's guardian.
+// =====================================================================
+const GUARDIANS = {
+  Intelligence: { name: "Morwen",  title: "the Hexwright",       img: "guardians/intelligence.png" },
+  Expertise:    { name: "Brassik", title: "the Tinker",          img: "guardians/expertise.png" },
+  Charisma:     { name: "Lyra",    title: "the Silver Voice",    img: "guardians/charisma.png" },
+  Leadership:   { name: "Ardent",  title: "the Commander",       img: "guardians/leadership.png" },
+  Wisdom:       { name: "Astra",   title: "Keeper of Stars",     img: "guardians/wisdom.png" },
+  Strength:     { name: "Kael",    title: "the Ironblade",       img: "guardians/strength.png" },
+  Craft:        { name: "Nyx",     title: "the Runesmith",       img: "guardians/craft.png" },
+  Influence:    { name: "Vasco",   title: "the Silver-Tongued",  img: "guardians/influence.png" }
+};
