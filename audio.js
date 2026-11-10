@@ -366,9 +366,13 @@ const Sound = (() => {
   const ownTrack = new Audio("music.mp3");
   ownTrack.loop = true;
   ownTrack.preload = "auto";
-  let ownTrackReady = false;
-  ownTrack.addEventListener("canplay", () => { ownTrackReady = true; });
-  ownTrack.addEventListener("error", () => { ownTrackReady = false; });
+  let ownTrackFailed = false;
+  let musicWanted = false;
+  // If the track can't load at all, fall back to the built-in loop.
+  ownTrack.addEventListener("error", () => {
+    ownTrackFailed = true;
+    if (musicWanted) startSynth();
+  });
 
   // Electric piano: a sine bent by another sine, giving a bell-like bark that mellows.
   function ePiano(out, t, midi, dur, vol = 0.035) {
@@ -474,12 +478,22 @@ const Sound = (() => {
     });
   }
 
+  // Play music.mp3. Online it may still be downloading, so start it
+  // anyway: it begins as soon as enough has arrived.
   function startMusic() {
-    if (ownTrackReady) {
-      ownTrack.volume = 0.6;
-      ownTrack.play().catch(() => {});
-      return;
-    }
+    musicWanted = true;
+    if (ownTrackFailed) { startSynth(); return; }
+    ownTrack.volume = 0.6;
+    ownTrack.play().catch(e => {
+      // Blocked until the next click: leave it for then.
+      // Paused before it started (music turned off): nothing wrong with the file.
+      if (e && (e.name === "NotAllowedError" || e.name === "AbortError")) return;
+      ownTrackFailed = true;
+      if (musicWanted) startSynth();
+    });
+  }
+
+  function startSynth() {
     const c = audio();
     if (!c || musicTimer) return;
     musicBus = c.createGain();
@@ -500,6 +514,7 @@ const Sound = (() => {
   }
 
   function stopMusic() {
+    musicWanted = false;
     ownTrack.pause();
     if (musicTimer) clearInterval(musicTimer);
     musicTimer = null;
