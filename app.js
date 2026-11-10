@@ -467,7 +467,6 @@ function todayBoard() {
       <div class="board-title">
         <p class="eyebrow">Quest board</p>
         <h2>Today</h2>
-        <p class="desc">Your Strength habits, plus one quest from each stat and two for your bonds. A fresh pick every day. Open a stat to see all its quests.</p>
       </div>
       <div class="board-side">
         ${shield("sun", "")}
